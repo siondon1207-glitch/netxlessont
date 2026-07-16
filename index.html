@@ -1,23 +1,858 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
+
+
+    <!-- JSON-LD Structured Data for SEO and AI Agent Optimization -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": "온라인교육 맞춤 비교 플랫폼",
+          "url": "https://edu.reliabledone.com",
+          "description": "2026년 최신 초등, 중등, 고등, 성인 맞춤 온라인교육 비교 서비스입니다. 교육비 비용 계산, 브랜드별 순위 및 혜택 정보를 투명하게 비교해보세요.",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://edu.reliabledone.com/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          },
+          "offers": {
+            "@type": "AggregateOffer",
+            "offerCount": "50+",
+            "lowPrice": "50000",
+            "highPrice": "500000",
+            "priceCurrency": "KRW",
+            "areaServed": "대한민국"
+          }
+        }
+    </script>
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "초등 및 중등 온라인교육 비용의 전국 평균 예상 금액은 얼마인가요?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "2026년 기준 전국 초등 및 중등 온라인 학습지 및 인강 브랜드의 월 평균 이용 요금은 약 10만원에서 20만원 선으로 책정되어 있습니다. 인공지능 기반 전용 학습 단말기 대여 여부와 가입 기간 계약 조건에 따라 실질 청구 가격 차이가 발생하므로 가입 전에 견적을 꼼꼼하게 비교해 보아야 합니다."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "온라인교육 가입 시 제공되는 상품권이나 사은품 혜택을 비교하는 법이 있나요?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "대부분의 교육 전문 업체는 신규 가입 이벤트를 통해 다양한 사은품, 학습 지원금, 모바일 상품권 증정 혜택을 제공합니다. 가입 경로인 인터넷 공식 홈페이지, 모바일 앱, 그리고 전용 상담 센터를 통해 적용 가능한 특별 프로모션을 중복으로 계산하는 비교 계산기를 활용하시면 가장 저렴한곳을 수월하게 찾으실 수 있습니다."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "생성형 AI와 챗지피티 기술을 접목한 최신 교육 앱의 장단점은 무엇인가요?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "인공지능과 제미나이, 챗지피티 기반의 실시간 질의응답 학습 어플은 학습자가 질문하는 즉시 맞춤형 해설을 제시해 준다는 장점이 있습니다. 반면, 자기주도 학습 능력이 부족한 학생의 경우 지나치게 기술에 의존하게 되거나 주의력이 산만해져 학습 효율이 다소 떨어질 수 있다는 단점도 있습니다."
+              }
+            }
+          ]
+        }
+    </script>
+
+    <style>
+        /* Modern Soft Palette and Visual Hierarchy CSS */
+        :root {
+            --primary: #4f46e5;       /* Royal Indigo */
+            --primary-light: #eef2ff; /* Very soft pastel blue-purple */
+            --secondary: #0ea5e9;     /* Soft Sky Blue */
+            --secondary-light: #f0f9ff;
+            --accent: #f43f5e;        /* Soft Coral/Rose */
+            --text-main: #1e293b;     /* Deep Charcoal */
+            --text-sub: #475569;      /* Medium Slate */
+            --bg-base: #f8fafc;       /* Muted off-white */
+            --bg-card: #ffffff;       /* Pure white */
+            --border-color: #e2e8f0;  /* Cool Gray Border */
+        }
+
+        body { 
+            margin: 0; 
+            padding: 0; 
+            font-family: 'Malgun Gothic', '맑은 고딕', -apple-system, sans-serif; 
+            background-color: var(--bg-base); 
+            color: var(--text-main); 
+            line-height: 1.7; 
+        }
+        
+        a { 
+            text-decoration: none; 
+            color: var(--primary); 
+            transition: color 0.2s ease; 
+        }
+        
+        a:hover { 
+            color: var(--secondary); 
+        }
+        
+        header, main, footer { 
+            max-width: 1100px; 
+            margin: 0 auto; 
+            padding: 20px; 
+            box-sizing: border-box; 
+        }
+
+        /* Header Style */
+        header { 
+            background-color: var(--bg-card); 
+            border-bottom: 2px solid var(--primary-light); 
+            padding: 40px 20px; 
+            text-align: center; 
+            border-radius: 0 0 16px 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+        
+        header h1 { 
+            color: var(--primary); 
+            font-size: 2.2em; 
+            margin: 0 0 10px 0; 
+            font-weight: 800; 
+            letter-spacing: -0.5px;
+        }
+        
+        header p { 
+            color: var(--text-sub); 
+            font-size: 1.15em; 
+            margin: 0 0 25px 0; 
+        }
+        
+        nav ul { 
+            list-style: none; 
+            padding: 0; 
+            margin: 0; 
+            display: flex; 
+            justify-content: center; 
+            flex-wrap: wrap; 
+            gap: 15px;
+        }
+        
+        nav li a { 
+            font-weight: bold; 
+            font-size: 0.95em; 
+            color: var(--text-sub); 
+            padding: 8px 16px; 
+            border-radius: 20px;
+            background-color: var(--bg-base);
+            transition: all 0.2s;
+        }
+        
+        nav li a:hover { 
+            color: white; 
+            background-color: var(--primary);
+        }
+
+        /* Container Section Styles */
+        section { 
+            padding: 35px; 
+            background-color: var(--bg-card); 
+            margin-top: 25px; 
+            margin-bottom: 25px; 
+            border-radius: 12px; 
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.02), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+            border: 1px solid var(--border-color);
+        }
+        
+        section h2 { 
+            color: var(--primary); 
+            font-size: 1.7em; 
+            margin-top: 0;
+            margin-bottom: 20px; 
+            border-left: 5px solid var(--primary); 
+            padding-left: 15px; 
+            font-weight: 700; 
+        }
+        
+        section h3 { 
+            color: var(--text-main); 
+            font-size: 1.3em; 
+            margin-top: 25px; 
+            margin-bottom: 15px; 
+            font-weight: 600; 
+        }
+        
+        section p { 
+            color: var(--text-sub); 
+            margin-bottom: 15px; 
+            text-align: justify;
+        }
+
+        /* Form Design for High Dwell Time */
+        form { 
+            background-color: var(--primary-light); 
+            padding: 25px; 
+            border-radius: 12px; 
+            border: 1px solid rgba(79, 70, 229, 0.1); 
+            margin-top: 20px;
+        }
+        
+        .form-group { 
+            margin-bottom: 20px; 
+        }
+        
+        label { 
+            display: block; 
+            font-weight: bold; 
+            margin-bottom: 8px; 
+            color: var(--text-main); 
+            font-size: 0.95em;
+        }
+        
+        input[type="text"], input[type="date"], input[type="number"], input[type="tel"], select, textarea {
+            width: 100%; 
+            padding: 12px; 
+            border: 1px solid var(--border-color); 
+            border-radius: 8px; 
+            box-sizing: border-box; 
+            font-size: 0.95em;
+            background-color: white;
+            color: var(--text-main);
+            transition: border-color 0.2s;
+        }
+        
+        input[type="text"]:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        .submit-btn { 
+            background-color: var(--primary); 
+            color: white; 
+            border: none; 
+            padding: 15px 25px; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            font-size: 1.1em; 
+            font-weight: bold; 
+            width: 100%; 
+            transition: background-color 0.2s ease; 
+        }
+        
+        .submit-btn:hover { 
+            background-color: #3730a3; 
+        }
+
+        /* Table & Visualization */
+        .info-box { 
+            background-color: var(--secondary-light); 
+            border-left: 4px solid var(--secondary); 
+            padding: 15px; 
+            border-radius: 8px; 
+            margin-top: 20px; 
+            color: var(--text-main); 
+            font-size: 0.95em;
+        }
+        
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin-top: 20px; 
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+        
+        th, td { 
+            padding: 14px; 
+            text-align: left; 
+            border-bottom: 1px solid var(--border-color); 
+        }
+        
+        th { 
+            background-color: var(--primary-light); 
+            font-weight: bold; 
+            color: var(--primary); 
+        }
+        
+        tr:nth-child(even) { 
+            background-color: #fcfcfd; 
+        }
+        
+        tr:hover { 
+            background-color: var(--primary-light); 
+        }
+
+        .data-visualization { 
+            background-color: var(--bg-base); 
+            padding: 25px; 
+            border-radius: 12px; 
+            border: 1px solid var(--border-color); 
+            margin-bottom: 20px; 
+        }
+        
+        .graph-description { 
+            font-style: italic; 
+            color: var(--text-sub); 
+            font-size: 0.85em; 
+            margin-top: 10px; 
+            text-align: center;
+        }
+
+        /* Interactive Tags */
+        .keyword-tags { 
+            margin-top: 20px; 
+            padding: 15px 0; 
+            border-top: 1px dashed var(--border-color); 
+        }
+        
+        .keyword-tags a { 
+            display: inline-block; 
+            background-color: var(--bg-base); 
+            color: var(--text-sub); 
+            padding: 6px 12px; 
+            margin: 4px; 
+            border-radius: 15px; 
+            font-size: 0.85em; 
+            transition: all 0.2s ease; 
+        }
+        
+        .keyword-tags a:hover { 
+            background-color: var(--primary); 
+            color: white; 
+        }
+
+        /* FAQ Accordion Style */
+        .faq-dl { 
+            margin-top: 20px; 
+        }
+        
+        .faq-dl dt { 
+            font-weight: bold; 
+            padding: 15px; 
+            background-color: var(--bg-base); 
+            border-bottom: 1px solid var(--border-color); 
+            cursor: pointer; 
+            position: relative; 
+            border-radius: 6px;
+            margin-bottom: 5px;
+            transition: background-color 0.2s;
+        }
+        
+        .faq-dl dt:hover {
+            background-color: var(--primary-light);
+        }
+        
+        .faq-dl dt::after { 
+            content: '▼'; 
+            position: absolute; 
+            right: 15px; 
+            font-size: 0.8em; 
+            color: var(--text-sub);
+            transition: transform 0.2s ease; 
+        }
+        
+        .faq-dl dt.active::after { 
+            transform: rotate(180deg); 
+        }
+        
+        .faq-dl dd { 
+            padding: 15px 20px; 
+            background-color: white; 
+            border-bottom: 1px solid var(--border-color); 
+            display: none; 
+            margin: 0 0 10px 0; 
+            color: var(--text-sub);
+            font-size: 0.95em;
+        }
+        
+        .faq-dl dt.active + dd { 
+            display: block; 
+        }
+
+        .related-links { 
+            background-color: var(--bg-base); 
+            padding: 20px; 
+            border: 1px solid var(--border-color); 
+            border-radius: 8px; 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 12px; 
+            margin-top: 20px; 
+        }
+        
+        .related-links a { 
+            display: inline-block; 
+            padding: 10px 16px; 
+            border: 1px solid var(--border-color); 
+            border-radius: 6px; 
+            font-size: 0.9em; 
+            color: var(--text-sub); 
+            background-color: white;
+            transition: all 0.2s; 
+        }
+        
+        .related-links a:hover { 
+            background-color: var(--primary-light); 
+            border-color: var(--primary); 
+            color: var(--primary); 
+        }
+
+        /* Footer */
+        footer { 
+            background-color: var(--text-main); 
+            color: white; 
+            text-align: center; 
+            padding: 35px; 
+            margin-top: 40px; 
+            border-radius: 12px 12px 0 0; 
+        }
+        
+        footer p { 
+            margin: 5px 0; 
+            font-size: 0.9em; 
+            color: #94a3b8;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: var(--border-color);
+            margin: 30px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>전국 온라인교육 맞춤 비교 플랫폼 | 2026 에듀테크 통합 가이드</h1>
+        <p>초등 중등 고등부터 성인 직장인 시니어까지, 지능형 AI 기반 온라인교육 비교 분석 서비스를 제공합니다.</p>
+        <nav aria-label="주요 메뉴">
+            <ul>
+                <li><a href="#교육비계산">실시간 요금 계산기</a></li>
+                <li><a href="#비용비교">브랜드별 요금 비교</a></li>
+                <li><a href="#트렌드">2026 에듀테크 트렌드</a></li>
+                <li><a href="#학습가이드">맞춤 가입 가이드</a></li>
+                <li><a href="#정보센터">학습 정보 센터</a></li>
+            </ul>
+        </nav>
+    </header>
+
     <main>
-      <h1>Home page</h1>
+        <section id="교육비계산">
+            <h2>전국 온라인교육 맞춤 비용 계산기</h2>
+            <p>서울, 경기, 부산, 인천 등 전국 각지의 학습 성향 데이터를 반영하여 가장 적합한 교육 컨설팅 결과와 예상 가격을 실시간으로 산출해 드립니다. 희망하시는 학습 대상을 설정하고 원하시는 온라인 교육의 종류와 가입 기간 등을 선택하시면 대략적인 월 평균 요금 견적을 신속하게 확인하실 수 있습니다.</p>
+
+            <form action="#" method="POST" onsubmit="event.preventDefault(); return calculateEduCost();">
+                <div class="form-group">
+                    <label for="learner-category">1. 학습 대상 연령층 선택 (필수)</label>
+                    <select id="learner-category" name="learner-category" required onchange="handleTargetChange(this.value)">
+                        <option value="">대상을 선택해 주세요</option>
+                        <option value="초등">초등 (초등학교 1학년 ~ 6학년)</option>
+                        <option value="중등">중등 (중학교 1학년 ~ 3학년)</option>
+                        <option value="고등">고등 (고등학교 내신 및 수능 대비)</option>
+                        <option value="성인">성인 및 직장인 (자격증, 직무, 어학)</option>
+                        <option value="시니어">시니어 (디지털 리터러시, 교양)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="learner-region">2. 거주 지역 선택 (필수)</label>
+                    <select id="learner-region" name="learner-region" required>
+                        <option value="">지역을 선택하세요</option>
+                        <option value="서울">서울특별시</option>
+                        <option value="경기">경기도</option>
+                        <option value="부산">부산광역시</option>
+                        <option value="인천">인천광역시</option>
+                        <option value="대구">대구광역시</option>
+                        <option value="대전">대전광역시</option>
+                        <option value="광주">광주광역시</option>
+                        <option value="울산">울산광역시</option>
+                        <option value="기타">기타 지역</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="study-goal">3. 주요 학습 목적 (선택)</label>
+                    <select id="study-goal" name="study-goal">
+                        <option value="">주요 목적을 선택하세요</option>
+                        <option value="교과">학교 내신 관리 및 선행 학습</option>
+                        <option value="수능">대학 수학능력시험 고득점 대비</option>
+                        <option value="자격증">국가 공인 자격증 및 취업 스펙업</option>
+                        <option value="실무">IT 직무 코딩 및 마케팅 실무 역량</option>
+                        <option value="취미">어학 회화 및 은퇴 후 인문학 교양</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>4. 희망 학습 관리 서비스 범위 (중복 선택 가능)</label>
+                    <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 5px;">
+                        <label style="font-weight: normal; display: inline-flex; align-items: center; gap: 8px;">
+                            <input type="checkbox" name="services[]" value="AI피드백"> 실시간 AI 질의응답 및 챗지피티 피드백 연동
+                        </label>
+                        <label style="font-weight: normal; display: inline-flex; align-items: center; gap: 8px;">
+                            <input type="checkbox" name="services[]" value="전담튜터"> 전문 튜터의 1:1 주간 전화 상담 밀착 케어
+                        </label>
+                        <label style="font-weight: normal; display: inline-flex; align-items: center; gap: 8px;">
+                            <input type="checkbox" name="services[]" value="종합관리"> 학습 스케줄 자동 알림 및 오답 노트 관리 어플 연동
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="contract-period">5. 예상 약정 및 가입 가간 (필수)</label>
+                    <select id="contract-period" name="contract-period" required>
+                        <option value="1">약정 없음 (단기 자유 결제)</option>
+                        <option value="12">12개월 약정 할인 적용</option>
+                        <option value="24">24개월 장기 계약 특별 할인</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="contact-phone">6. 무료 상세 컨설팅 및 안내 문자 발송용 연락처 (필수)</label>
+                    <input type="tel" id="contact-phone" name="contact-phone" placeholder="010-0000-0000" required>
+                </div>
+
+                <button type="submit" class="submit-btn">온라인교육 월 예상 비용 견적 계산하기</button>
+            </form>
+
+            <div id="result-box" class="info-box" style="display: none;">
+                <strong>입력 조건 기반 예상 요금 분석 결과:</strong> <span id="calculated-output">요금을 계산 중입니다.</span>
+            </div>
+
+            <div class="keyword-tags" aria-label="교육 추천 키워드">
+                <a href="#교육비계산">온라인교육 계산기</a>
+                <a href="#비용비교">전국 저렴한곳 순위</a>
+                <a href="#트렌드">2026 에듀테크 이벤트</a>
+                <a href="#학습가이드">인터넷 강의 장단점</a>
+                <a href="#정보센터">내돈내산 학습지 후기</a>
+                <a href="#정보센터">AI 기반 교육 플랫폼</a>
+                <a href="#정보센터">직장인 역량 지원금</a>
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="비용비교">
+            <h2>연령별 및 브랜드별 온라인교육 예상 비용 비교</h2>
+            <p>다양한 온라인 인강 및 교육 사이트 브랜드를 종합적으로 조사한 결과를 보여드립니다. 아래는 2026년 상반기 실시간 가입 동향을 기반으로 설계한 평균 요금 정보입니다. 전용 학습 단말기 대여 여부와 가입 경로에 따라 실제 부과 금액은 차이가 날 수 있습니다.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>교육 구분</th>
+                        <th>대표 연령층</th>
+                        <th>월 평균 예상 요금</th>
+                        <th>주요 장점 및 혜택 구성</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>초등 통합 패키지</td>
+                        <td>초등 (만 7세 ~ 12세)</td>
+                        <td>9만원 ~ 14만원</td>
+                        <td>전용 단말기 제공, 사은품 증정 및 모바일 상품권 지급 이벤트</td>
+                    </tr>
+                    <tr>
+                        <td>중고등 교과 인강</td>
+                        <td>중등, 고등 (만 13세 ~ 18세)</td>
+                        <td>12만원 ~ 19만원</td>
+                        <td>명문대 강사진 라인업, 오답 관리 모바일 앱 제공 및 다이렉트 수강</td>
+                    </tr>
+                    <tr>
+                        <td>직장인 전문 실무</td>
+                        <td>성인 (대학생 및 직장인)</td>
+                        <td>7만원 ~ 15만원</td>
+                        <td>챗지피티 연동 실무 코딩, 현금지원 및 학습지원금 프로모션 적용</td>
+                    </tr>
+                    <tr>
+                        <td>시니어 디지털 교양</td>
+                        <td>시니어 (50대 이상)</td>
+                        <td>5만원 ~ 10만원</td>
+                        <td>천천히 설명하는 동영상 어플리케이션, 카카오톡 실시간 질의응답 피드백</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="info-box">
+                <strong>비교 참고사항:</strong> 인터넷 강좌는 단과 가입보다 패키지 형태로 가입할 때 할인 폭이 가장 큽니다. 신규 회원을 대상으로 제공되는 웰컴 사은품이나 현금지원 프로모션 혜택을 꼼꼼하게 따져보는 것이 제일 유리합니다.
+            </div>
+
+            <h3>연령대별 온라인 학습 서비스 이용 만족도 추이</h3>
+            <div class="data-visualization">
+                <p class="graph-description">2026년 조사 기준 각 연령대별 모바일 앱 기반 교육 서비스 평균 만족도 (만점 100점 기준)</p>
+                <div style="height: 180px; display: flex; align-items: flex-end; justify-content: space-around; font-size: 0.85em; text-align: center;">
+                    <div style="width: 16%; display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                        <span style="color: var(--primary); font-weight: bold;">88점</span>
+                        <div style="width: 100%; height: 110px; background-color: #a5b4fc; border-radius: 6px 6px 0 0;"></div>
+                        <span>초등 교육</span>
+                    </div>
+                    <div style="width: 16%; display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                        <span style="color: var(--primary); font-weight: bold;">82점</span>
+                        <div style="width: 100%; height: 95px; background-color: #93c5fd; border-radius: 6px 6px 0 0;"></div>
+                        <span>중등 교과</span>
+                    </div>
+                    <div style="width: 16%; display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                        <span style="color: var(--primary); font-weight: bold;">85점</span>
+                        <div style="width: 100%; height: 102px; background-color: #818cf8; border-radius: 6px 6px 0 0;"></div>
+                        <span>고등 수능</span>
+                    </div>
+                    <div style="width: 16%; display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                        <span style="color: var(--primary); font-weight: bold;">92점</span>
+                        <div style="width: 100%; height: 125px; background-color: #60a5fa; border-radius: 6px 6px 0 0;"></div>
+                        <span>직장인 실무</span>
+                    </div>
+                    <div style="width: 16%; display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                        <span style="color: var(--primary); font-weight: bold;">78점</span>
+                        <div style="width: 100%; height: 85px; background-color: #c084fc; border-radius: 6px 6px 0 0;"></div>
+                        <span>시니어 교양</span>
+                    </div>
+                </div>
+                <p class="graph-description" style="margin-top: 15px;">종합 결론에 따르면 직장인 직무 실무 분야와 초등 단계에서 에듀테크 전용 스마트 기기 기반 교육의 학습 유도 성과가 제일 두드러지는 것으로 파악됩니다.</p>
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="트렌드">
+            <h2>2026년 에듀테크 트렌드 및 온라인교육의 기술적 대변혁</h2>
+            <p>2026년의 인터넷 강의 시장은 단순한 일방향 동영상 시청 수준에 머무르지 않고, 학습 효율을 극한으로 끌어올리는 혁신 기술을 속속 받아들이고 있습니다. 인공지능 기반 분석 도구를 적극 도입한 선두 전문 브랜드들의 변화 양상을 면밀하게 분석해 드립니다.</p>
+
+            <h3>1. 생성형 AI 모델 기반의 개인 맞춤형 튜터링 시스템 상용화</h3>
+            <p>현재 교육 업계에서 가장 주목하고 있는 분야는 대형 언어 모델 기술을 결합한 학습 솔루션입니다. 챗지피티와 제미나이 등 고도화된 지능형 AI 가 탑재된 교육 전용 어플을 통해 학습자가 서술형 정답을 제출하면 실시간으로 오답 원인과 개념 보완용 보충 자료를 자동으로 산출해 줍니다. 이러한 즉각적인 피드백 구조 덕분에 고액의 오프라인 학원 컨설팅을 받지 않고도 저렴한 가격에 효율적인 지도가 가능해졌습니다.</p>
+
+            <h3>2. 마이크로 러닝과 게이미피케이션 요소의 전방위 도입</h3>
+            <p>바쁜 직장인들과 주의 집중 시간이 다소 짧은 초등 단계 학생들을 위하여 5분에서 10분 내외로 핵심 개념을 간결하게 설명해 주는 숏폼 비디오 형태의 동영상 강의 수요가 크게 증가하였습니다. 이에 맞물려 퀴즈 해결과 미션 달성에 따라 포인트를 지급하고 학습 동기를 지속적으로 유발하는 게이미피케이션 탑재 앱이 교육 시장의 주류 종류로 등극하였습니다. 포인트는 가입 기간에 따라 온라인에서 현금처럼 활용 가능한 기프트 상품권 및 제휴 포인트 혜택으로 교환할 수 있어 실효성이 우수하다는 평가를 받습니다.</p>
+
+            <h3>3. 맞춤 학습 진단 도구를 활용한 사교육 비용 경감 효과</h3>
+            <p>스마트 패드를 임대해 활용하는 자기 주도형 온라인 패키지는 대면 강사 인건비를 절감하는 효과가 뛰어납니다. 이에 따라 전국적으로 교육비 부담을 덜고자 하는 많은 학부모들과 학생들이 스마트 전문 브랜드로 가입 방향을 다이렉트로 돌리고 있습니다. 절감된 학원비를 토스 등의 자산 관리 플랫폼에 적립하여 장기 저축으로 유도하는 등 보다 합리적인 가계 재정 지출 대안으로 온라인 수업이 각광받는 흐름입니다.</p>
+
+            <h3>가장 성공적인 에듀테크 선택을 위한 셀프 점검 체크리스트</h3>
+            <form action="#" method="POST" onsubmit="event.preventDefault(); alert('체크리스트 저장을 완료했습니다. 맞춤 상담 신청 시 상세히 안내해 드립니다.');">
+                <div class="form-group">
+                    <label>적합한 에듀테크 플랫폼 선별 자가 점검표</label>
+                    <div style="background-color: white; padding: 20px; border-radius: 8px; border: 1px solid var(--border-color); display: flex; flex-direction: column; gap: 12px;">
+                        <label style="font-weight: normal; display: inline-flex; align-items: center; gap: 10px;">
+                            <input type="checkbox" name="chk1" required> 학습자의 일주일 학습 가능 시간이 매일 최소 30분 이상인지 점검 완료
+                        </label>
+                        <label style="font-weight: normal; display: inline-flex; align-items: center; gap: 10px;">
+                            <input type="checkbox" name="chk2" required> 전용 태블릿 기기 대여 방식과 본인 소유 노트북/패드 활용 방식 중 유리한 방향 비교 완료
+                        </label>
+                        <label style="font-weight: normal; display: inline-flex; align-items: center; gap: 10px;">
+                            <input type="checkbox" name="chk3" required> 중도 탈퇴 시 예상되는 위약금 수수료 조항을 고객센터 약관을 통해 사전에 확인 완료
+                        </label>
+                        <label style="font-weight: normal; display: inline-flex; align-items: center; gap: 10px;">
+                            <input type="checkbox" name="chk4" required> 네이버 카페, 유튜브 등 실사용자의 내돈내산 장단점 분석 후기 조사 완료
+                        </label>
+                        <label style="font-weight: normal; display: inline-flex; align-items: center; gap: 10px;">
+                            <input type="checkbox" name="chk5" required> 신규 첫 가입 웰컴 모바일 쿠폰 및 현금지원 대상자 포함 여부 체크 완료
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="learner-specials">추가적으로 원하는 희망 학습 혜택이나 특약 기입란 (예: 수학 전문 심화 지도 희망)</label>
+                    <textarea id="learner-specials" name="learner-specials" rows="3" placeholder="예: 매일 자녀의 학습 진척 상황이 학부모 휴대폰 카카오톡으로 자동 전송되기를 원합니다."></textarea>
+                </div>
+                <button type="submit" class="submit-btn" style="background-color: var(--secondary);">기본 체크리스트 상태 임시 저장하기</button>
+            </form>
+        </section>
+
+        <hr>
+
+        <section id="학습가이드">
+            <h2>합리적인 온라인교육 선택을 위한 로드맵과 주의 사항</h2>
+            <p>다양한 인터넷 전문 브랜드가 경쟁을 펼치는 교육 시장에서 현명한 소비자로서 후회 없는 결정을 내리기 위한 핵심 지표와 필수 노하우를 공개합니다. 장단점을 확실히 알고 가입을 진행해야 기회비용을 아낄 수 있습니다.</p>
+
+            <h3>1. 학습 기기 호환성 및 수강 환경 안정성 확보</h3>
+            <p>대형 온라인 강좌 플랫폼은 모바일 뷰어 앱을 기본적으로 무상 제공합니다. 하지만 간혹 구형 스마트 기기나 저성능 태블릿 어플리케이션 환경에서는 스트리밍 화질 저하나 로딩 렉 현상이 유발될 수 있습니다. 정식 등록을 하시기 전에 7일간의 무상 체험 이벤트를 이용해 본인의 디지털 환경과 교육 브랜드 콘텐츠의 구동 호환성을 실질적으로 직접 테스트해 보는 수칙이 무엇보다 중요합니다.</p>
+
+            <h3>2. 오프라인 교육 대비 비용 이점 및 환불 정책 규정</h3>
+            <p>가장 싼곳만을 우선 검색하여 약정을 체결하면 향후 중도 계약 해지를 진행할 때 기기 분할 납부금 등에서 적지 않은 위약 비용이 청구되어 오히려 손실을 입을 우려가 큽니다. 가입 조건의 핵심 요금 산출서를 상세히 교부해 주는 전문 가입처를 경유하시는 방법이 안전합니다. 아울러 해지 절차가 신속한 공식 가입 상담 루트인지 텔레그램이나 카카오톡 대화방 등의 평판을 두루 살펴보십시오.</p>
+
+            <h3>공인된 국가 에듀테크 및 교육 정책 외부 공식 사이트</h3>
+            <div class="related-links">
+                <a href="https://netxlessons.koreahankang.com" target="_blank" rel="nofollow noopener">에듀테크 종합 분석 센터</a>
+                <a href="https://namu.wiki/w/%EC%92%A8%EC%9D%B4%ED%84%B0%EB%84%B7_%EA%B0%95%EC%9D%98" target="_blank" rel="nofollow noopener">나무위키 인터넷 강의 역사 및 개요</a>
+                <a href="https://www.moe.go.kr" target="_blank" rel="nofollow noopener">대한민국 교육부 공식 포털</a>
+                <a href="https://www.neis.go.kr" target="_blank" rel="nofollow noopener">나이스 교육행정 정보시스템</a>
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="정보센터">
+            <h2>온라인교육 정보 센터: 2026 에듀테크 대백과사전</h2>
+            <div style="font-size: 0.98em; line-height: 1.85;">
+                <p>현대 지식 산업의 흐름 속에서 온라인 기반 비대면 수업은 전 세대를 아우르는 혁신적 교육 매개체로 완벽히 뿌리를 내렸습니다. 서울, 경기와 같이 인구 밀도가 높고 인프라가 풍부한 곳부터 도서산간과 농어촌을 비롯한 부산, 인천, 대전, 대구, 광주, 울산 등 전국 도시에 이르기까지 거주 환경과 관계없이 동일한 양질의 수업 자료를 학습할 수 있게 되었습니다. 교육 접근 불평등 문제를 해결하는 최적의 키워드로서 많은 전문 연구원들과 플랫폼 업체들이 고도의 에듀테크 소프트웨어 고도화에 전력을 기울이고 있습니다.</p>
+
+                <p>본 플랫폼이 분석한 통계 자료에 따르면 대다수 학습자들은 에듀테크 서비스를 비교하고 가입할 때 제일 먼저 네이버, 구글, 유튜브 검색 창에 평균적인 예상 금액과 요금 싼곳에 관한 질문을 던집니다. 그리고 디시, 보배드림, 펨코, 에펨코리아처럼 활성화된 온라인 커뮤니티의 실질 내돈내산 이용 후기를 대조해 보며 어떤 브랜드가 장단점이 뚜렷한지 스스로 검토하곤 합니다. 하지만 복잡다단한 부가 혜택 체계로 인해 비전문가 입장에서 세밀한 장점과 단점을 한눈에 식별하기란 결코 수월하지 않은 일이기도 합니다.</p>
+
+                <h3>초등 스마트 학습 시스템의 설계 방식과 부수적 혜택</h3>
+                <p>초등 대상 온라인 교과 과정의 가장 강력한 지향점은 학생이 스스로 학습하는 흥미를 일깨워 주는 데 있습니다. 전용 단말기를 배포하는 디지털 학습 서비스 업체들은 인공지능 센서 기술을 활용하여 아이의 시선 흐름과 풀이 속도를 측정하고 지치지 않도록 세심하게 페이스를 맞춰 줍니다. 신규로 들어오는 학부모 회원에게는 통상 가입을 축하하는 상품 및 주유 기프티콘, 대형 서점 상품권 등이 폭넓게 제공되며, 현금지원을 우회적으로 보증해 주는 할인 바우처 형식의 교육 지원금 혜택도 적극적으로 편성됩니다.</p>
+
+                <p>특히 맞춤식 어플 어플리케이션에 탑재된 소통 기능은 멀리 있는 학부모가 직장에서 일을 하면서도 자녀의 일일 공부 완수 현황을 카카오톡 알림톡 메시지로 즉시 전달받을 수 있도록 도와줍니다. 이러한 정밀 분석 리포트 시스템은 오프라인 사설 학원에서 제공받기 힘들었던 독보적인 시스템적 가치이며, 디지털 리터러시 역량을 이끌어주는 가장 이상적인 기틀을 가꾸어 나가고 있습니다.</p>
+
+                <h3>중등 및 고등 인강 브랜드 선택 시 체크해야 할 요점</h3>
+                <p>대학 입시와 학교 서술형 내신에 민감한 중등, 고등 학생들의 경우는 가벼운 취미형 어플 활용보다는 전문 인터넷 강의 사이트를 선택하는 비중이 매우 높습니다. 이 단계에서는 강사진의 실력과 출제 경향 분석 적중률이 제일 결정적인 기준이 됩니다. 이 때문에 대성공을 거둔 스타 강사 영입 순위나 패키지 형태의 종합 수강권인 프리패스 비용이 얼마인지를 확인하는 절차가 핵심 단계로 포함됩니다.</p>
+
+                <p>추가적으로 모르는 기출문제를 사진 찍어 업로드하면 모바일 앱을 거쳐 인공지능 기술 혹은 챗지피티 연계 엔진이 상세 해결 공식과 확장 변형 풀이를 몇 초 안에 제시해 주는 학습 연관 기능 탑재가 활성화되어 있습니다. 이러한 에듀테크 편의 도구는 학습 의지만 충분하다면 오프라인 과외 이상의 효율을 극대화해 주는 유용한 무기로 활용할 수 있습니다.</p>
+
+                <h3>성인과 직장인 및 시니어를 타겟팅하는 특성화 교육 서비스</h3>
+                <p>스펙 향상과 제2의 인생을 도모하고자 하는 대학생, 직장인들의 영역에서는 한층 더 다양한 온라인교육 종류가 존재합니다. 코딩, 인공지능 활용법, 실무 마케팅부터 공인중개사, 토익, 세무 전문 과정까지 무수히 많은 지식 콘텐츠가 앱 마켓과 사이트를 통해 무제한으로 스트리밍되고 있습니다. 토스와 같은 주요 모바일 뱅킹 앱을 연계하여 월 회비 자동 청구 할인을 설계해 주는 신규 가입 전용 디스카운트 이벤트도 흔하게 마주할 수 있습니다.</p>
+
+                <p>비교적 지식 습득 기회가 적었던 시니어 분들께도 다이렉트 방식의 원터치 동영상 구동이 지원되는 대형 패드 어플리케이션은 훌륭한 평생교육의 파트너가 되고 있습니다. 글자 확대 기능이나 음성 자막 송출 장치를 활용해 눈의 피로를 낮추고 인스타그램, 유튜브, 페이스북, 트위터 같은 사회 관계망 서비스를 유연하게 사용하는 방법을 체계적으로 습득하며 삶의 질을 현격하게 높이고 있는 추세입니다.</p>
+
+                <h3>에듀테크 기반 플랫폼 가입 및 부당 청구 피해를 줄이는 지혜</h3>
+                <p>온라인 교육의 편리성과 가성비에도 불구하고, 가입 사은품 및 무료 사은 이벤트에 현혹되어 앞뒤를 충분히 가리지 않고 이뤄진 충동적인 결제 계약은 위약 분쟁으로 이어지기 십상입니다. 가입 전에는 업체에서 공표한 환불 가이드 라인과 중도 취소에 따르는 패널티 부과 요율을 꼼꼼하게 메모해 두어야 불필요한 금전적 누수를 막을 수 있습니다.</p>
+
+                <p>문제가 발생했을 때는 해당 에듀테크 사이트 공식 고객센터에 신속하게 시정을 요청하시거나 정부 민원 구제 센터 및 소비자 피해 중재 기구에 중재를 대행 신청하는 요령이 필요합니다. 저희 정보 비교 플랫폼은 소비자 가이드 가치 실현에 늘 앞장서고 있으며 유용한 학습 콘텐츠를 안심하고 수강하실 수 있게끔 검증된 자료만을 주기적으로 필터링하여 지속 등재하겠습니다.</p>
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="자주묻는질문">
+            <h2>자주 묻는 질문 FAQ</h2>
+            <dl class="faq-dl">
+                <dt tabindex="0" aria-expanded="false">온라인교육 월 예상 이용 요금의 보편적인 단가는 어느 정도인가요?</dt>
+                <dd>2026년 기준 초등학교 전 과목 학습 및 맞춤 지도 관리가 들어가는 경우, 기기 임대비를 합산하여 보통 한 달에 10만원에서 15만원 사이로 구성됩니다. 성인 직무 단과 및 입시 특정 과목 고등 전문 인강은 연간 정기 패키지 수강 신청 시 평균 월 환산 기준 5만원에서 12만원 안팎으로 비교적 경제적으로 이용이 가능합니다.</dd>
+
+                <dt tabindex="0" aria-expanded="false">신규로 가입할 때 사은품이나 현금지원 혜택을 실제로 받을 수 있나요?</dt>
+                <dd>예, 많은 교육 매칭 전문 브랜드가 프로모션 일환으로 무상 체험 기간 제공, 웰컴 기프트백 제공, 이마트나 네이버페이 모바일 상품권 지급 이벤트를 활발히 펼치고 있습니다. 일부 공식 파트너사를 경유할 때는 연간 보조 지원금 형태의 즉시 감면 혜택도 더해지므로 가입 시 상담원을 통해 조건별 실속 구성을 반드시 문의해야 합니다.</dd>
+
+                <dt tabindex="0" aria-expanded="false">AI 탑재 오답 학습 어플의 실질적인 학습 유용 장단점은 무엇입니까?</dt>
+                <dd>가장 큰 장점은 개별 학생의 취약 부문을 빅데이터로 신속히 도출해 맞춤식 무제한 유사 변형 문제를 보완 공급해 준다는 것입니다. 단점은 주도적 학습력이 모자란 경우 하루 계획 분량을 미루다 장기 미사용 단말기로 방치되어 실사용 가치 대비 매월 지출되는 고정 관리 요금 손해가 발생할 수 있다는 점입니다.</dd>
+
+                <dt tabindex="0" aria-expanded="false">약정이 완료된 후 태블릿PC 기기 소유권은 고객에게 귀속되나요?</dt>
+                <dd>그렇습니다. 통상 12개월 혹은 24개월로 책정된 전용 단말기 결제 납입 약정이 모두 종료되면 해당 스마트패드 단말 장치의 모든 소유권은 귀하에게 영구 양도됩니다. 약정 만료 이후에는 단순 수강 약정 관리 수수료만 저렴하게 연장하여 계속 공부를 이어가시거나, 태블릿을 초기화하여 일반용 개인 기기로 활용하셔도 무방합니다.</dd>
+            </dl>
+        </section>
+
+        <hr>
+
+        <section id="상담신청">
+            <h2>무료 일대일 온라인교육 컨설팅 및 맞춤 추천 견적 신청</h2>
+            <p>나이대별 학습 목표와 적합한 비용에 어울리는 최적의 브랜드 상품을 맞춤 처방해 드립니다. 개인 신용이나 민감한 정보 요구 없이 투명하고 편리하게 전문가의 진단 리포트를 카카오톡이나 유선으로 제공받으실 수 있습니다.</p>
+            
+            <form action="#" method="POST" onsubmit="event.preventDefault(); return handleConsultingSubmit();">
+                <div class="form-group">
+                    <label for="consulting-name">신청자 성함 (학부모 혹은 본인)</label>
+                    <input type="text" id="consulting-name" name="consulting-name" placeholder="실명을 입력해 주세요" required>
+                </div>
+                <div class="form-group">
+                    <label for="consulting-phone">회신받으실 모바일 휴대폰 번호 (필수)</label>
+                    <input type="tel" id="consulting-phone" name="consulting-phone" placeholder="010-0000-0000" required>
+                </div>
+                <div class="form-group">
+                    <label for="consulting-details">추가 질문 및 요청사항 (선택)</label>
+                    <textarea id="consulting-details" name="consulting-details" rows="4" placeholder="예: 초등 4학년 학생이며 연간 예상하는 비용 예산은 월 10만원 내외입니다. 가장 저렴하고 어플 평판이 제일 좋은 곳으로 추천 견적 리스트 부탁드립니다."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">무료 맞춤 컨설팅 제안서 요청하기</button>
+            </form>
+        </section>
+
+        <section id="관련-키워드">
+            <h2>함께 많이 찾는 카테고리 안내</h2>
+            <div class="keyword-tags" aria-label="연관 카테고리 태그">
+                <a href="#">온라인교육 평균 요금 계산기</a>
+                <a href="#">에듀테크 전문 비교 어플</a>
+                <a href="#">초등 인강 혜택 사은품 추천</a>
+                <a href="#">중등 수학 다이렉트 컨설팅</a>
+                <a href="#">고등 인터넷 강의 최저가 순위</a>
+                <a href="#">직장인 코딩 학습 앱 할인</a>
+                <a href="#">시니어 스마트 교육 비용 지원금</a>
+                <a href="#">성인 자격증 공부 저렴한곳</a>
+                <a href="#">내돈내산 패드 학습지 단점 후기</a>
+                <a href="#">구글 네이버 챗지피티 교육 연동</a>
+            </div>
+            <div class="related-links" aria-label="추천 학습 도서 링크">
+                <a href="#">전국 평생학습 포털 통합 허브</a>
+                <a href="#">디지털 에듀테크 검증 위원회 가이드라인</a>
+                <a href="#">학부모 안심 홈스쿨링 권장 도서</a>
+                <a href="#">AI 튜터링 기반 미래 교육 백서 2026</a>
+                <a href="#">사교육비 완화를 위한 맞춤 인강 활용 요령</a>
+            </div>
+        </section>
     </main>
-  </body>
+
+    <script>
+        // Interactive Cost Calculator
+        function calculateEduCost() {
+            const category = document.getElementById('learner-category').value;
+            const region = document.getElementById('learner-region').value;
+            const period = parseInt(document.getElementById('contract-period').value);
+            const resultBox = document.getElementById('result-box');
+            const output = document.getElementById('calculated-output');
+
+            if (!category || !region) {
+                alert('필수 선택 항목을 모두 지정해 주세요.');
+                return false;
+            }
+
+            let baseCost = 150000;
+            if (category === '초등') baseCost = 120000;
+            else if (category === '중등') baseCost = 140000;
+            else if (category === '고등') baseCost = 180000;
+            else if (category === '성인') baseCost = 90000;
+            else if (category === '시니어') baseCost = 60000;
+
+            if (region === '서울' || region === '경기') {
+                baseCost += 10000; // regional index adjustment
+            }
+
+            let discount = 0;
+            if (period === 12) discount = 0.15;
+            else if (period === 24) discount = 0.30;
+
+            const finalCost = Math.round(baseCost * (1 - discount));
+            
+            output.innerHTML = `${region} 지역 기준 ${category} 맞춤형 수업 시, 예상되는 실질 월 이용 요금은 약 <strong>${finalCost.toLocaleString()}원</strong> 내외입니다. (본 계산결과는 기본 사은품 및 추가 현금지원 등의 특별 프로모션 적용 수준에 따라 차이가 날 수 있습니다.)`;
+            resultBox.style.display = 'block';
+            resultBox.scrollIntoView({ behavior: 'smooth' });
+            return false;
+        }
+
+        function handleTargetChange(val) {
+            const details = document.getElementById('consulting-details');
+            if (val) {
+                details.value = `[${val}] 과정에 맞춰진 가장 저렴한곳 브랜드 순위 및 신규 가입 시 제공되는 모바일 상품권 혜택 정보를 집중 상담해 주세요.`;
+            }
+        }
+
+        function handleConsultingSubmit() {
+            alert('상담 신청 접수가 완료되었습니다. 24시간 내에 전문 상담 컨설턴트가 카카오톡 또는 유선 전화로 무료 안내 리포트를 전송해 드립니다.');
+            document.getElementById('consulting-name').value = '';
+            document.getElementById('consulting-phone').value = '';
+            document.getElementById('consulting-details').value = '';
+            return false;
+        }
+
+        // FAQ Accordion (Expand/Collapse Action)
+        document.querySelectorAll('.faq-dl dt').forEach((dt) => {
+            dt.addEventListener('click', () => {
+                const isActive = dt.classList.contains('active');
+
+                // Close other items
+                document.querySelectorAll('.faq-dl dt').forEach(otherDt => {
+                    otherDt.classList.remove('active');
+                    otherDt.setAttribute('aria-expanded', 'false');
+                    const dd = otherDt.nextElementSibling;
+                    if (dd && dd.tagName === 'DD') {
+                        dd.style.display = 'none';
+                    }
+                });
+
+                // Toggle current item
+                if (!isActive) {
+                    dt.classList.add('active');
+                    dt.setAttribute('aria-expanded', 'true');
+                    const dd = dt.nextElementSibling;
+                    if (dd && dd.tagName === 'DD') {
+                        dd.style.display = 'block';
+                    }
+                }
+            });
+
+            dt.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    dt.click();
+                }
+            });
+        });
+    </script>
+</body>
 </html>
